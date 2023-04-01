@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="prestiti")
+@NamedQuery(name = "Prestiti.findByTessera", query = "SELECT p FROM Prestiti p WHERE p.utente.tessera = :tessera AND p.data_restituzione_effettiva = null ")
 @NamedQuery(name = "Prestiti.prestitiScaduti", query = "SELECT p FROM Prestiti p WHERE p.data_restituzione_effettiva = null OR p.data_restituzione_effettiva > p.data_restituzione_prevista")
 public class Prestiti  implements Serializable{
 
@@ -23,8 +24,6 @@ public class Prestiti  implements Serializable{
 	private LocalDate data_restituzione_effettiva;
 	
 	
-	
-
 	public Prestiti(Utente utente, Archive archivio, LocalDate data_inizio_prestito, LocalDate data_restituzione_effettiva) {
 		super();
 		this.utente = utente;

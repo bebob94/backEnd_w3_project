@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="catalogo")
 @NamedQuery(name = "Archive.findByYear", query = "SELECT a FROM Archive a WHERE a.yearOfPublishing = :anno")
-@NamedQuery(name = "Archive.findByAuthor", query = "SELECT a FROM Archive a WHERE TYPE(a) IN (Book, Magazine) AND a.author = :author")
+@NamedQuery(name = "Archive.findByAuthor", query = "SELECT a FROM Archive a WHERE a.author = :author")
 @NamedQuery(name = "Archive.findByTitle", query = "SELECT a FROM Archive a WHERE LOWER(a.titolo) LIKE LOWER('%'||  :titolo  ||'%')")
 public abstract class Archive  implements Serializable{
 	

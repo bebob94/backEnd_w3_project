@@ -47,7 +47,7 @@ public class Catalogue {
 		System.out.println("Utente eliminato nel database");
 	}
 
-  //<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN ELEMENTOPER ID>>>>>>>>>>>>>>>>>>>
+  //<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN ELEMENTO PER ID>>>>>>>>>>>>>>>>>>>
     public static Archive getById(Long iSBNcode) throws SQLException {
   		em.getTransaction().begin();
   		Archive e = em.find(Archive.class, iSBNcode);
@@ -74,8 +74,8 @@ public class Catalogue {
  	}
 
   //<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN ELEMENTO PER AUTORE>>>>>>>>>>>>>>>>>>>
- 	public static List<Book> getByAuthor(String author)throws SQLException {
- 	    Query query = em.createNamedQuery("Book.findByAuthor", Book.class);
+ 	public static List<Archive> getByAuthor(String author)throws SQLException {
+ 	    Query query = em.createNamedQuery("Archive.findByAuthor", Archive.class);
  	    query.setParameter("author", author);
  	    return query.getResultList();
  	}
@@ -86,6 +86,13 @@ public class Catalogue {
  		query.setParameter("titolo", titolo);
  		return query.getResultList();
  	}
+ 	
+ 	//<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN PRESTITO NON SCADUTO PER N. TESSERA>>>>>>>>>>>>>>>>>>>
+ 	 public static List<Prestiti> getPrestitoById(Long tessera) throws SQLException {
+ 		Query query = em.createNamedQuery("Prestiti.findByTessera");
+ 		query.setParameter("tessera", tessera);
+   		return query.getResultList();
+   	}
  	
  	//<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN PRESTITO SCADUTO NON RESTITUITO>>>>>>>>>>>>>>>>>>>
  	public static   List<Prestiti> PrestitiScaduti() throws SQLException {

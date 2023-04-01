@@ -7,8 +7,6 @@ import enum_.enum_genere;
 
 @Entity
 @DiscriminatorValue(value="book")
-@NamedQuery(name = "Book.findByAuthor", query = "SELECT b FROM Book b WHERE b.author = :author")
-
 public class Book extends Archive {
 	@Column(name="author")
 	String author;

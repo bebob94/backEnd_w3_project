@@ -90,8 +90,8 @@ public class Runnable {
 
 			 //<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN ELEMENTO PER AUTORE>>>>>>>>>>>>>>>>>>>
 			
-			List<Book> booksByAuthor = Catalogue.getByAuthor("bebo");
-			System.out.println("\nLibri cercati per autore: " + booksByAuthor);
+			List<Archive> ArchiveByAuthor = Catalogue.getByAuthor("bebo");
+			System.out.println("\nLibri cercati per autore: " + ArchiveByAuthor);
 			
 			//<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN ELEMENTO PER TITOLO>>>>>>>>>>>>>>>>>>>
 			
@@ -102,6 +102,9 @@ public class Runnable {
 			List<Prestiti> PrestitiScaduti = Catalogue.PrestitiScaduti();
 			System.out.println("\n"+PrestitiScaduti);
 			
+			//<<<<<<<<<<<<<<<<<<<METODO CHE CERCA UN PRESTITO NON SCADUTO PER N. TESSERA>>>>>>>>>>>>>>>>>>>
+			List<Prestiti> Prestiticercati = Catalogue.getPrestitoById(10l);
+			System.out.println(Prestiticercati);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
